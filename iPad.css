@@ -1,0 +1,109 @@
+html, body, h1, h2, h3, h4, h5, h6.span, p, a, img {
+  margin: 0px;
+  padding: 0px;
+}
+
+
+.mainbox {
+  height: 1500px;
+  width: 1200px;
+  padding: 0 calc((100vw - 1200px) / 2);
+}
+.mainbox h1 {
+  font-size: 3rem;
+}
+.mainbox .main {
+  margin-top: 200px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+.mainbox .main .imgbox {
+  top: 0;
+  position: sticky;
+  background-color: rgb(158, 158, 158);
+  width: 800px;
+  height: 600px;
+  border-radius: 20px;
+}
+.mainbox .main .selectorbox {
+  width: 400px;
+  height: auto;
+  box-sizing: border-box;
+  padding: 30px;
+  background-color: azure;
+}
+.mainbox .main .selectorbox h2 {
+  display: inline;
+}
+.mainbox .main .selectorbox h2 span {
+  height: auto;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+.mainbox .main .selectorbox h2 :nth-child(2) {
+  color: gray;
+}
+.mainbox .main .selectorbox .selectorlist {
+  margin-top: 30px;
+  height: 500px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 10px;
+}
+.mainbox .main .selectorbox .selectorlist .selectors {
+  width: 163px;
+  height: 100px;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.mainbox .main .selectorbox .selectorlist .selectors h2 {
+  display: inline;
+}
+.mainbox .main .selectorbox .selectorlist .selectors h2 span {
+  height: auto;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+.mainbox .main .selectorbox .selectorlist .selectors h2 :nth-child(2) {
+  font-size: 1rem;
+  color: black;
+}
+.mainbox .main .selectorbox .selectorlist .selectors .circle {
+  width: 35px;
+  height: 35px;
+  margin: 0px;
+  border-radius: 100%;
+  background-color: aquamarine;
+}
+.mainbox .main .selectorbox .selectorlist .selectors p {
+  margin-top: 5px;
+  font-size: 0.8rem;
+}
+.mainbox .main .selectorbox .selectorlist .selectors-style2 {
+  width: 100%;
+  height: 100px;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 10px;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  padding: 5%;
+}
+.mainbox .main .selectorbox .selectorlist .selectors-style2 span {
+  display: flex;
+  justify-content: space-between;
+}
+.mainbox .main .selectorbox .selectorlist .selectors-style2 span p {
+  margin-top: 5px;
+  font-size: 0.8rem;
+}
+.mainbox .main .selectorbox .selectorlist .selectors-style2 span :nth-child(1) {
+  width: 60%;
+}/*# sourceMappingURL=iPad.css.map */

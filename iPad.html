@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./iPad.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="mainbox">
+        <h1>購買iPad Air</h1>
+        <label>NT$29,900</label>
+        <div class="main">
+            <div class="imgbox"></div>
+            <div class="selectorbox">
+                <h2><span>外觀。</span><span>挑選喜歡的顏色</span></h2>
+                <div class="selectorlist" id="skin">
+                    <div class="selectors">
+                        <div class="circle"></div>
+                        <p>太空灰</p>
+                    </div>
+                    <div class="selectors"></div>
+                    <div class="selectors"></div>
+                    <div class="selectors"></div>
+                    <div class="selectors"></div>
+                </div>
+                <h2>
+                    <span>儲存裝置。</span>
+                    <span>選擇需要的儲存空間大小。</span>
+                </h2>
+                <div class="selectorlist">
+                    <div class="selectors">
+                        <h2><span>64</span><span>GB</span></h2>
+                        <p>19900起</p>
+                    </div>
+                    <div class="selectors"></div>
+                </div>
+                <div class="selectorlist">
+                    <h2><span>連線能力。</span><span>選擇連線方式</span></h2>
+                    <div class="selectors-style2">
+                        <h2>Wi-Fi</h2>
+                        <span>
+                            <p>每部 iPad 都可連接到 Wi-Fi 網路，使你能保持連線。</p>
+                            <p>NT$24,900</p>
+                        </span>
+                    </div>
+                    <div class="selectors-style2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        window.onload = async function () {
+                let url = 'https://raw.githubusercontent.com/ericatlin/ipad-homework/main/iPad.json';
+                let iPadJson = await jsonresponse(url);
+                console.log(iPadJson);
+                let skin = document.getElementById('skin');
+                
+                iPadJson.Color.forEach(element =>{
+                    let skinSelect = document.createElement('div');
+                    skinSelect.setAttribute('class', 'selectors')
+                    let circle = document.createElement('div');
+                    circle.setAttribute('class', 'circle');
+
+                })
+                
+
+
+            }
+
+            async function jsonresponse(res) {
+                try {
+                    let response = await fetch(res);
+                    let data = await response.json();
+                    return data;
+                } catch (error) {
+                    console.error(error);
+                }
+            }
+    </script>
+</body>
+</html>
