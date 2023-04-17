@@ -10,76 +10,160 @@
 
 <body>
     <div class="mainbox">
-        <h1>購買iPad Air</h1>
-        <label>NT$29,900</label>
+        <div class="sticky">
+            <h1>購買iPad Air</h1>
+            <label id="alltotalprice">NT$29,900</label>
+        </div>
         <div class="main">
-            <div class="imgbox"></div>
+            <div class="imgbox">
+                <img id="img" src="./1.jpg" alt="">
+            </div>
             <div class="selectorbox">
                 <h2><span>外觀。</span><span>挑選喜歡的顏色</span></h2>
                 <div class="selectorlist" id="skin">
-                    <div class="selectors">
-                        <div class="circle"></div>
-                        <p>太空灰</p>
-                    </div>
-                    <div class="selectors"></div>
-                    <div class="selectors"></div>
-                    <div class="selectors"></div>
-                    <div class="selectors"></div>
                 </div>
-                <h2>
-                    <span>儲存裝置。</span>
-                    <span>選擇需要的儲存空間大小。</span>
-                </h2>
-                <div class="selectorlist">
-                    <div class="selectors">
-                        <h2><span>64</span><span>GB</span></h2>
-                        <p>19900起</p>
-                    </div>
-                    <div class="selectors"></div>
+
+                <h2><span>儲存裝置。</span><span>選擇需要的儲存空間大小。</span></h2>
+                <div class="selectorlist"id="GB">
                 </div>
-                <div class="selectorlist">
+                <div class="selectorlist"id="connectbox">
                     <h2><span>連線能力。</span><span>選擇連線方式</span></h2>
-                    <div class="selectors-style2">
-                        <h2>Wi-Fi</h2>
-                        <span>
-                            <p>每部 iPad 都可連接到 Wi-Fi 網路，使你能保持連線。</p>
-                            <p>NT$24,900</p>
-                        </span>
-                    </div>
-                    <div class="selectors-style2"></div>
                 </div>
             </div>
         </div>
     </div>
-
+    <script>
+        const price = 19900;
+    </script>
     <script type="module">
         window.onload = async function () {
-                let url = 'https://raw.githubusercontent.com/ericatlin/ipad-homework/main/iPad.json';
-                let iPadJson = await jsonresponse(url);
-                console.log(iPadJson);
-                let skin = document.getElementById('skin');
-                
-                iPadJson.Color.forEach(element =>{
-                    let skinSelect = document.createElement('div');
-                    skinSelect.setAttribute('class', 'selectors')
-                    let circle = document.createElement('div');
-                    circle.setAttribute('class', 'circle');
+            let url = 'https://raw.githubusercontent.com/ericatlin/ipad-homework/main/iPad.json';
+            let iPadJson = await jsonresponse(url);
+            let skin = document.getElementById('skin');
+            let img = document.getElementById('img');
+            let skinbox,skinbtn, gbinner, contectinner, gbbtn, connectbtn;
+            let allprice = document.getElementById('alltotalprice');
+            allprice.innerText = `NT$${price}`;
+            iPadJson.Color.forEach((e,index)=>{
+                skinbox = CreateSkinSelect(iPadJson,index);
+                skin.innerHTML += skinbox;
+            })
+            
 
+            let gbbox = document.getElementById('GB');
+            Object.entries(iPadJson.storgr).forEach(([key, value],index) =>{
+                gbinner = CreateGBselect(key, value)
+                gbbox.innerHTML += gbinner;
+            })
+            
+            let connectbox = document.getElementById('connectbox');
+            Object.entries(iPadJson.Conection).forEach(([key, value]) => {
+                contectinner = CreateContectselect(key, value)
+                connectbox.innerHTML += contectinner;
+            })
+
+
+
+            let skinbool =false,gbbool = false ,conbool = false;
+
+            skinbtn = document.querySelectorAll('#selectors-skin');
+            skinbtn.forEach((e, index) => {
+                e.addEventListener('click', () => {
+                    skinbtn.forEach(e => {
+                        e.style.border = "1px solid black";
+                    })
+                    e.style.border = "2px solid rgb(90, 112, 212)";
+                    img.setAttribute('src', `./${index + 1}.jpg`)
+
+                    if (skinbool==false) {
+                        skinbool = true;
+                    }
                 })
-                
+            })
+
+            let totalpricecon = document.querySelectorAll('#totalpricecon')
+            gbbtn = document.querySelectorAll('#selectors-GB');
+            gbbtn.forEach((e, index) => {
+                e.addEventListener('click', () => {
+                    gbbtn.forEach(e => {
+                        e.style.border = "1px solid black";
+                    })
+                    e.style.border = "2px solid rgb(90, 112, 212)";
+                    totalpricecon.forEach((e,conindex)=>{
+                        e.innerText=`NT$${ price + Object.values(iPadJson.storgr)[index] + Object.values(iPadJson.Conection)[conindex]}`
+                    })
+                    allprice.innerText = `NT$${totalpricegb[index].innerText}`
+                    if (gbbool == false) {
+                        gbbool = true;
+                    }
+                })
+            })
+            let totalpricegb = document.querySelectorAll('#totalpricegb')
+            connectbtn = document.querySelectorAll('#connect');
+            connectbtn.forEach((e, index) => {
+                e.addEventListener('click', () => {
+                    connectbtn.forEach(e => {
+                        e.style.border = "1px solid black";
+                    })
+                    e.style.border = "2px solid rgb(90, 112, 212)";
+                    totalpricegb.forEach((e, gbindex) => {
+                        e.innerText = `NT$${price + Object.values(iPadJson.storgr)[gbindex] + Object.values(iPadJson.Conection)[index]}`
+                    })
+                    allprice.innerText = `NT$${totalpricecon[index].innerText}`
+
+                    if (conbool == false) {
+                        conbool = true;
+                    }
+                })
+            })
+        }
 
 
+
+
+
+        function CreateSkinSelect(element,i){
+
+            let SkinSelect = `
+            <button class="selectors" id="selectors-skin">
+                <div id="circle" class="circle"style="background-color:${element.Color[i]}"></div>
+                <p>${element.ColorName[i]}</p>
+            </button>`
+            
+            return SkinSelect;
+        }
+
+        function CreateGBselect(gb,priceplus){
+
+            let DB =`
+            <button class="selectors" id="selectors-GB">
+                <h2><span>${gb}</span><span>GB</span></h2>
+                <p id="totalpricegb">NT$${price+ priceplus}</p>
+            </button>
+                `
+            return DB;
+        }
+        function CreateContectselect(conect, priceplus) {
+                let Conection = `
+                    <button class="selectors"id="connect">
+                        <h2>${conect}</h2>
+                        <span>
+                            <p>每部 iPad 都可連接到 Wi-Fi 網路，使你能保持連線。</p>
+                            <p id="totalpricecon">NT$${price+ priceplus}</p>
+                        </span>
+                    </button>
+                `
+                return Conection;
             }
-
-            async function jsonresponse(res) {
-                try {
-                    let response = await fetch(res);
-                    let data = await response.json();
-                    return data;
-                } catch (error) {
-                    console.error(error);
-                }
+        async function jsonresponse(res) {
+            try {
+                let response = await fetch(res);
+                let data = await response.json();
+                return data;
+            } catch (error) {
+                console.error(error);
             }
+        }
     </script>
 </body>
 </html>
