@@ -92,7 +92,7 @@
                     totalpricecon.forEach((e,conindex)=>{
                         e.innerText=`NT$${ price + Object.values(iPadJson.storgr)[index] + Object.values(iPadJson.Conection)[conindex]}`
                     })
-                    allprice.innerText = `NT$${totalpricegb[index].innerText}`
+                    allprice.innerText = `${totalpricegb[index].innerText}`
                     if (gbbool == false) {
                         gbbool = true;
                     }
@@ -109,7 +109,7 @@
                     totalpricegb.forEach((e, gbindex) => {
                         e.innerText = `NT$${price + Object.values(iPadJson.storgr)[gbindex] + Object.values(iPadJson.Conection)[index]}`
                     })
-                    allprice.innerText = `NT$${totalpricecon[index].innerText}`
+                    allprice.innerText = `${totalpricecon[index].innerText}`
 
                     if (conbool == false) {
                         conbool = true;
