@@ -64,7 +64,6 @@
 
 
 
-            let skinbool =false,gbbool = false ,conbool = false;
 
             skinbtn = document.querySelectorAll('#selectors-skin');
             skinbtn.forEach((e, index) => {
@@ -75,9 +74,7 @@
                     e.style.border = "2px solid rgb(90, 112, 212)";
                     img.setAttribute('src', `./${index + 1}.jpg`)
 
-                    if (skinbool==false) {
-                        skinbool = true;
-                    }
+                    
                 })
             })
 
@@ -93,9 +90,7 @@
                         e.innerText=`NT$${ price + Object.values(iPadJson.storgr)[index] + Object.values(iPadJson.Conection)[conindex]}`
                     })
                     allprice.innerText = `${totalpricegb[index].innerText}`
-                    if (gbbool == false) {
-                        gbbool = true;
-                    }
+                    
                 })
             })
             let totalpricegb = document.querySelectorAll('#totalpricegb')
@@ -111,9 +106,7 @@
                     })
                     allprice.innerText = `${totalpricecon[index].innerText}`
 
-                    if (conbool == false) {
-                        conbool = true;
-                    }
+                    
                 })
             })
         }
